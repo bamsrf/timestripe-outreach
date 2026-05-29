@@ -295,7 +295,7 @@ def page_contacts():
                 "Followers": st.column_config.NumberColumn(format="%d"),
                 "fit_score": st.column_config.NumberColumn(format="%+d"),
             },
-            disabled=[c for c in show_cols if c != "Status"],
+            disabled=[c for c in show_cols if c not in ("Status", "Notes")],
             num_rows="fixed",
             height=600,
             key="contacts_editor",
@@ -323,8 +323,10 @@ def page_contacts():
                 # Merge changes back into original df
                 for idx in edited.index:
                     df.loc[idx, "Status"] = edited.loc[idx, "Status"] if edited.loc[idx, "Status"] != "Not contacted" else ""
+                    if "Notes" in edited.columns:
+                        df.loc[idx, "Notes"] = edited.loc[idx, "Notes"]
                 save_master(df)
-            with st.spinner("Pushing status to Google Sheet + repainting..."):
+            with st.spinner("Pushing status + notes to Google Sheet + repainting..."):
                 result = subprocess.run(
                     [sys.executable, str(ROOT / "sheet_status_sync.py"), "--paint"],
                     capture_output=True, text=True, cwd=str(ROOT),

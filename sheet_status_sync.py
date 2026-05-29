@@ -72,6 +72,7 @@ def main():
     st_i = m_headers.index("Status")
     fcd_i = m_headers.index("First Contact Date")
     lfu_i = m_headers.index("Last Follow-up")
+    notes_i = m_headers.index("Notes") if "Notes" in m_headers else None
 
     # Build email → state map from MASTER (only rows with non-empty Status)
     master_state = {}
@@ -86,6 +87,7 @@ def main():
             "Status": status,
             "First Contact Date": date_to_sheet_format(row[fcd_i]),
             "Last Follow-up": date_to_sheet_format(row[lfu_i]),
+            "Notes": str(row[notes_i] or "") if notes_i is not None else "",
         }
 
     # Filter by --emails if specified
@@ -123,6 +125,7 @@ def main():
     status_col = headers.index("Status") + 1
     fcd_col = headers.index("First Contact Date") + 1
     lfu_col = headers.index("Last Follow-up") + 1
+    notes_col = headers.index("Notes") + 1 if "Notes" in headers else None
 
     updates = []
     changed_rows = []
@@ -136,6 +139,7 @@ def main():
         current_status = row[status_col - 1] if len(row) >= status_col else ""
         current_fcd = row[fcd_col - 1] if len(row) >= fcd_col else ""
         current_lfu = row[lfu_col - 1] if len(row) >= lfu_col else ""
+        current_notes = row[notes_col - 1] if notes_col and len(row) >= notes_col else ""
 
         row_changed = False
         if current_status != state["Status"]:
@@ -149,6 +153,10 @@ def main():
         if state["Last Follow-up"] and current_lfu != state["Last Follow-up"]:
             updates.append({"range": gspread.utils.rowcol_to_a1(row_idx, lfu_col),
                             "values": [[state["Last Follow-up"]]]})
+            row_changed = True
+        if notes_col and state["Notes"] != current_notes:
+            updates.append({"range": gspread.utils.rowcol_to_a1(row_idx, notes_col),
+                            "values": [[state["Notes"]]]})
             row_changed = True
         if row_changed:
             changed_rows.append((row_idx, row[0], state["Status"]))
