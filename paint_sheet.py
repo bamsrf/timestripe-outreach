@@ -24,7 +24,7 @@ COLOR_MAP = {
     "Sent intro":         {"red": 1.000, "green": 0.953, "blue": 0.804},  # soft yellow #FFF3CD
     "Sent program info":  {"red": 1.000, "green": 0.800, "blue": 0.600},  # orange #FFCC99 — escalation
     "Replied":            {"red": 0.820, "green": 0.925, "blue": 0.925},  # teal/cyan #D1ECF1
-    "Wants money for posts": {"red": 0.769, "green": 0.871, "blue": 0.949},  # blue #C4DEF2
+    "Wants money for posts": {"red": 0.910, "green": 0.835, "blue": 0.961},  # purple #E8D5F5
     "Live collab":        {"red": 0.851, "green": 0.945, "blue": 0.812},  # green #D9F1CF
     "Dead":               {"red": 0.949, "green": 0.831, "blue": 0.831},  # red #F2D4D4
     "Do not contact":     {"red": 0.949, "green": 0.831, "blue": 0.831},  # red #F2D4D4

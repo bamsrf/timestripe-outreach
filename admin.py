@@ -269,7 +269,7 @@ def page_contacts():
             "Sent intro":              "background-color: #FFF3CD; color: #1a1a1a",  # soft yellow
             "Sent program info":       "background-color: #FFCC99; color: #1a1a1a",  # orange — escalation
             "Replied":                 "background-color: #D1ECF1; color: #1a1a1a",  # teal/cyan
-            "Wants money for posts":   "background-color: #C4DEF2; color: #1a1a1a",  # blue
+            "Wants money for posts":   "background-color: #E8D5F5; color: #1a1a1a",  # purple
             "Live collab":             "background-color: #D9F1CF; color: #1a1a1a",  # green
             "Dead":                    "background-color: #F2D4D4; color: #1a1a1a",  # red
             "Do not contact":          "background-color: #F2D4D4; color: #1a1a1a",  # red
