@@ -1,0 +1,9 @@
+google-api-python-client>=2.100
+python-dotenv>=1.0
+PyYAML>=6.0
+openpyxl>=3.1
+streamlit>=1.40
+pandas>=2.0
+plotly>=5.20
+gspread>=6.0
+google-auth>=2.30

@@ -1,0 +1,118 @@
+# Outreach configuration — single welcome template with tier-specific intro
+# sentence and rotating subject lines.
+
+sender:
+  daily_limit: 80
+  min_delay_seconds: 30
+  max_delay_seconds: 60
+  imap_folder: "Bloggers"
+
+filters:
+  min_fit_score: 3
+  # For "welcome" stage: skip these statuses (already contacted or dead)
+  skip_statuses_welcome:
+    - "Sent intro"
+    - "Sent program info"
+    - "Wants money for posts"
+    - "Replied"
+    - "Dead"
+    - "Do not contact"
+  # Back-compat alias (used by current outreach_sender.py)
+  skip_statuses:
+    - "Sent intro"
+    - "Sent program info"
+    - "Wants money for posts"
+    - "Replied"
+    - "Dead"
+    - "Do not contact"
+  # For "offer" stage: only send to those who replied to welcome
+  send_offer_statuses:
+    - "Replied"
+
+# Subject line variations — rotated round-robin to vary outreach footprint.
+# IMPORTANT: every variation contains the word "Timestripe" so a single Yandex
+# rule can catch all replies regardless of which variation was sent.
+# (Set up rule: "Тема содержит Timestripe" → переместить в Bloggers.)
+subjects:
+  - "Liked your content, decided to reach out — Timestripe"
+  - "Reaching out from Timestripe — really enjoyed your channel"
+  - "Hey {Name} — Timestripe team wanted to reach out"
+  - "Loved your content — quick thought from Timestripe"
+
+# Email body — common to all tiers. {intro} is substituted from tier-specific
+# `intros` below.
+body: |
+  Hey {Name}!
+
+  My name is Vlad, I'm part of the team behind Timestripe.
+
+  {intro}
+
+  We've spent the past few years building Timestripe (https://timestripe.com/) — and it's hard to put in a box. It's not a task manager or a typical planner. The core idea is connecting what you do today with where you want to be in months and years. So instead of just checking off tasks, you always know why each one matters. People end up calling it a "Goal Manager."
+
+  Here's a short video where our CEO Sergey walks through it:
+  https://youtu.be/YR-km3ibpew
+
+  We're not as known as Notion or Todoist — but the people who use Timestripe tend to stick with it because it actually changes how they think about their goals, not just their to-do lists. I think it could genuinely fit the way you already approach your days.
+
+  No deliverables list, no pressure. I just thought this might be something you'd find useful for yourself first — and maybe worth sharing with your audience if it clicks.
+
+  If you're curious, I'd love to set you up with Timestripe PRO so you can explore everything without limits. We also have an affiliate program with personal promo codes if that's ever interesting down the line.
+
+  Would love to hear what you think.
+
+  Warm regards,
+  Vlad
+  Timestripe
+
+# ============================================================================
+# OFFER STAGE — sent AFTER they replied to welcome. Fill with real program
+# details, paid collab rates, promo codes etc. Currently TODO placeholders.
+# ============================================================================
+
+offer:
+  subjects:
+    - "Re: Timestripe collab — details and program"
+    - "Following up — Timestripe collab proposal"
+    - "Timestripe partnership — content + payment details"
+  body: |
+    Hey {Name},
+
+    Thanks for getting back to me — great questions, happy to walk you through it.
+
+    On content and deliverables:
+    We don't prescribe formats or timelines. The best content tends to be organic — if you try Timestripe, find the scenarios where it genuinely clicks for your workflow, and share that experience, it resonates far better than a scripted review. Video works especially well for showing the product in action. As for platforms, whatever works best for your audience is the right call.
+
+    On budget:
+    We work with two models — you can use one or both:
+
+    1. Revenue Share
+    You get a personal promo code that gives your audience 30% off Timestripe PRO. You earn 20% back for every subscription made through your code. No deadlines, no minimum posts required — the code works ongoing. When you'd like to withdraw, just reach out and we'll transfer within the month.
+
+    2. Views-Based Payment
+    You create content featuring Timestripe, post it publicly, and get paid based on views:
+
+    $50 per 100,000 views
+    $500 per 1,000,000 views
+    Views are counted over 60 days from publication, and if you post multiple pieces, all views are cumulative. Verification usually happens around 30 days after posting, with payout within 7 business days.
+
+    You can read more about the program here: https://timestripe.com/boards/2gcPGP7F/
+
+    Let me know which direction feels right, or if you'd like to mix both — happy to set everything up.
+
+    Warm regards,
+    Vlad
+
+# Tier-specific intro sentence (one sentence each). Used by welcome stage only.
+# Uses minimal HTML markup: <a href="{URL}">{Platform} channel</a>.
+# The sender renders TWO versions of every email:
+#   - HTML — anchor tag is preserved → clickable link
+#   - Plain text — anchor tag is converted to "label (url)" for non-HTML clients
+intros:
+  A: 'I came across your <a href="{URL}">{Platform} channel</a> about how you plan your days with so much intention — your vision boards, weekly resets, and the way you map out your goals — and it really resonated both with me and what we''ve been building for our users.'
+
+  B: 'I came across your <a href="{URL}">{Platform} channel</a> about how you build habits and stay consistent with self-growth — and it really resonated both with me and what we''ve been building for our users.'
+
+  C: 'I came across your <a href="{URL}">{Platform} channel</a> about how you structure your creative process and run your day as a freelance creator — and it really resonated both with me and what we''ve been building for our users.'
+
+  D: 'I came across your <a href="{URL}">{Platform} channel</a> about how you break down productivity tools and help people find a setup that actually works — and it really resonated both with me and what we''ve been building for our users.'

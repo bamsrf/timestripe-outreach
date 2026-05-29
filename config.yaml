@@ -1,0 +1,138 @@
+# TimeStripe outreach — search profiles (tiers).
+# Each tier is a separate search pass with its own keywords + subscriber range.
+# Target audience: international / English-speaking, people who visibly USE
+# planning/productivity tools (real Timestripe persona).
+
+defaults:
+  min_videos: 3
+  days_back: 180          # ignore stale channels (no upload in N days)
+  results_per_keyword: 50
+  relevance_language: en
+  skip_cyrillic_names: true
+  min_fit_score: -2       # drop channels with fit_score below this (-2 keeps marginal, blocks junk like charliebrice)
+
+tiers:
+  - name: A_dream_life_planner
+    niche_label: "A - Life Planner"
+    weight: 40
+    min_subscribers: 500
+    max_subscribers: 10000
+    keywords:
+      # Plan-with-me / aesthetic planning
+      - plan with me
+      - plan my week
+      - planner with me
+      - my planner setup
+      - bullet journal setup
+      - bujo flip through
+      - vision board
+      - vision board 2026
+      - dream life vision board
+      # Goal setting / intentional living
+      - goal setting routine
+      - yearly review
+      - year ahead planning
+      - annual review
+      - monthly reset
+      - weekly reset
+      - sunday reset
+      - life reset
+      - intentional living
+      # Study vlog (MAJOR — 47% of user's existing CRM)
+      - study with me
+      - study vlog
+      - study aesthetic
+      - productive study day
+      - med student vlog
+      - uni vlog
+      - college productivity vlog
+      - exam prep vlog
+      - law student vlog
+      - pre-med vlog
+      # Day in my life productive
+      - day in my life productive
+      - aesthetic morning routine
+      - cozy productive day
+      - that girl routine
+
+  - name: B_self_improvement
+    niche_label: "B - Self-Improvement"
+    weight: 30
+    min_subscribers: 500
+    max_subscribers: 10000
+    keywords:
+      # Habits / discipline / journaling
+      - self improvement routine
+      - self discipline tips
+      - habits that changed my life
+      - habit tracker setup
+      - daily journaling routine
+      - morning journaling
+      - shadow work journal
+      - 5am routine
+      - building discipline
+      - mindset shift
+      - atomic habits
+      - stop procrastinating
+      - self growth journey
+      - personal development routine
+      - winter arc routine
+      - levelling up vlog
+      # Reflection / planning self-work
+      - monthly reflection
+      - weekly review routine
+      - goal tracker
+      - life audit
+      - hard pivot routine
+
+  - name: C_creative_professional
+    niche_label: "C - Creative"
+    weight: 20
+    min_subscribers: 500
+    max_subscribers: 10000
+    keywords:
+      # Creator workflows
+      - creator workflow
+      - freelance designer day
+      - designer workflow
+      - graphic designer vlog
+      - illustrator workflow
+      - artist studio routine
+      - writer routine
+      - writer's day
+      - freelance writer life
+      - my freelance routine
+      - my creative process
+      # Productive creator vibes
+      - tools for creators
+      - notion for designers
+      - notion for writers
+      - studio vlog designer
+      - designer day in the life
+      - creator productivity setup
+
+  - name: D_productivity_tech
+    niche_label: "D - Productivity Tech"
+    weight: 10
+    min_subscribers: 10000
+    max_subscribers: 300000
+    keywords:
+      # App reviews / setups
+      - best productivity apps 2026
+      - notion alternatives
+      - notion setup
+      - notion productivity tour
+      - notion templates
+      - planning app review
+      - productivity setup 2026
+      - todoist vs notion
+      - obsidian vs notion
+      - apple notes vs notion
+      - best planner app
+      - calendar app review
+      - second brain app
+      - task management app
+      - sunsama review
+      - motion app review
+      - ai planner app
+      - my productivity stack

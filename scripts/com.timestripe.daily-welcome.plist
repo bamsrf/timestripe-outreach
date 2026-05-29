@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.timestripe.daily-welcome</string>
+
+    <!-- Wrapper does: 1) sync replies, 2) send 25 welcome emails -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/vladislavrumancev/Desktop/Cursor/Timestripe/scripts/daily_welcome.sh</string>
+        <string>25</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/vladislavrumancev/Desktop/Cursor/Timestripe</string>
+
+    <!-- 11:00 LOCAL time, every day. launchd runs in local TZ. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>11</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- launchd will run the job at next opportunity if Mac was asleep at 11:00 -->
+    <key>StandardOutPath</key>
+    <string>/Users/vladislavrumancev/Desktop/Cursor/Timestripe/output/daily_welcome.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/vladislavrumancev/Desktop/Cursor/Timestripe/output/daily_welcome.stderr.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
